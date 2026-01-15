@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WorldTripClub - 세계일주 여행 플래너</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../images/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../images/apple-touch-icon.png"
+    />
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico" />
+
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-brand">
+          <h1>WorldTripClub</h1>
+        </div>
+        <button class="nav-toggle" id="navToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="country.html">국가정보</a></li>
+          <li><a href="#exchange">환율정보</a></li>
+          <li><a href="#board">게시판</a></li>
+          <li><a href="#" class="btn-login">로그인</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-slider">
+        <div class="slider-container">
+          <div class="slide active">
+            <img
+              src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=1920&q=80"
+              alt="World Map"
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=1920&q=80"
+              alt="Eiffel Tower Paris"
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=1920&q=80"
+              alt="Santorini Greece"
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=80"
+              alt="Mountain Landscape"
+            />
+          </div>
+          <div class="slide">
+            <img
+              src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1920&q=80"
+              alt="Paris Street"
+            />
+          </div>
+        </div>
+        <button class="slider-btn prev" id="prevBtn">❮</button>
+        <button class="slider-btn next" id="nextBtn">❯</button>
+        <div class="slider-dots" id="sliderDots"></div>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="container">
+        <div class="hero-content">
+          <h1 class="hero-title">어디로 가시나요?</h1>
+
+          <!-- Search Section -->
+          <div class="hero-search">
+            <div class="search-tabs">
+              <button class="search-tab active" data-tab="all">
+                <span class="tab-icon">🏠</span>
+                전체 검색
+              </button>
+              <button class="search-tab" data-tab="hotel">
+                <span class="tab-icon">🏨</span>
+                호텔
+              </button>
+              <button class="search-tab" data-tab="gallery">
+                <span class="tab-icon">📸</span>
+                갤러리
+              </button>
+              <button class="search-tab" data-tab="restaurant">
+                <span class="tab-icon">🍴</span>
+                음식점
+              </button>
+            </div>
+
+            <div class="search-box">
+              <span class="search-icon">🔍</span>
+              <input
+                type="text"
+                class="search-input"
+                placeholder="여행지, 갤러리, 호텔 등"
+                id="heroSearch"
+              />
+              <button class="search-button">검색</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- hobby Rates Section -->
+    <section class="hobby-rates" id="hobby">
+      <div class="container">
+        <h2 class="section-title">내 관심사에 맞는 갤러리를 찾아보세요</h2>
+        <p class="section-subtitle">
+          무엇을 좋아하시나요? WTC가 전부 준비했습니다
+        </p>
+        <div class="rates-grid">
+          <div
+            class="rate-card"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1533929736458-ca588d08c8be?w=600&q=80');
+            "
+          >
+            <div class="rate-overlay"></div>
+            <div class="rate-content">
+              <div class="rate-icon">🎭</div>
+              <h3>야외</h3>
+              <p class="rate-description">자연과 모험을 즐기는 야외 활동</p>
+            </div>
+          </div>
+          <div
+            class="rate-card"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=600&q=80');
+            "
+          >
+            <div class="rate-overlay"></div>
+            <div class="rate-content">
+              <div class="rate-icon">🍜</div>
+              <h3>음식</h3>
+              <p class="rate-description">세계 각국의 미식 문화 체험</p>
+            </div>
+          </div>
+          <div
+            class="rate-card"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1499364615650-ec38552f4f34?w=600&q=80');
+            "
+          >
+            <div class="rate-overlay"></div>
+            <div class="rate-content">
+              <div class="rate-icon">🎨</div>
+              <h3>문화</h3>
+              <p class="rate-description">역사와 예술이 살아있는 공간</p>
+            </div>
+          </div>
+          <div
+            class="rate-card"
+            style="
+              background-image: url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80');
+            "
+          >
+            <div class="rate-overlay"></div>
+            <div class="rate-content">
+              <div class="rate-icon">🌊</div>
+              <h3>물</h3>
+              <p class="rate-description">해양 스포츠와 수상 레저</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- World Cities Section -->
+    <section class="world-cities">
+      <div class="container">
+        <h2 class="section-title">World Cities</h2>
+        <div class="cities-grid">
+          <div class="city-card">
+            <div
+              class="city-circle"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?w=400&q=80');
+              "
+            >
+              <div class="city-overlay"></div>
+              <div class="city-content">
+                <h3>NYC</h3>
+                <p class="city-info">
+                  <span class="time" id="nyc-time">--:--</span>
+                  <span class="weather" id="nyc-weather">Loading...</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="city-card">
+            <div
+              class="city-circle"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=400&q=80');
+              "
+            >
+              <div class="city-overlay"></div>
+              <div class="city-content">
+                <h3>FRA</h3>
+                <p class="city-info">
+                  <span class="time" id="fra-time">--:--</span>
+                  <span class="weather" id="fra-weather">Loading...</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="city-card">
+            <div
+              class="city-circle"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=400&q=80');
+              "
+            >
+              <div class="city-overlay"></div>
+              <div class="city-content">
+                <h3>TYO</h3>
+                <p class="city-info">
+                  <span class="time" id="tyo-time">--:--</span>
+                  <span class="weather" id="tyo-weather">Loading...</span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="city-card">
+            <div
+              class="city-circle"
+              style="
+                background-image: url('https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=400&q=80');
+              "
+            >
+              <div class="city-overlay"></div>
+              <div class="city-content">
+                <h3>PEK</h3>
+                <p class="city-info">
+                  <span class="time" id="pek-time">--:--</span>
+                  <span class="weather" id="pek-weather">Loading...</span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Travel Planner Section -->
+    <section class="travel-planner">
+      <div class="container">
+        <h2 class="section-title">Travel Planner</h2>
+        <div class="planner-grid">
+          <div class="planner-card">
+            <label for="departure">Departure </label>
+            <input type="date" id="departure" class="date-input" />
+          </div>
+          <div class="planner-card">
+            <label for="arrival">Arrival </label>
+            <input type="date" id="arrival" class="date-input" />
+          </div>
+        </div>
+        <button class="btn-secondary">여행 계획 시작하기</button>
+      </div>
+    </section>
+
+    <!-- Travel Tips Section -->
+    <section class="travel-tips">
+      <div class="container">
+        <h2 class="section-title">Travel Tips & Guide</h2>
+        <div class="tips-container">
+          <div class="tip-item">
+            <div class="tip-header">
+              <div class="tip-icon">✈️</div>
+              <h3>여행 준비물 체크리스트</h3>
+              <span class="tip-toggle">+</span>
+            </div>
+            <div class="tip-content">
+              <ul>
+                <li>여권 및 비자 (유효기간 6개월 이상)</li>
+                <li>항공권 및 숙소 예약 확인서</li>
+                <li>여행자 보험 가입증서</li>
+                <li>국제 운전면허증 (필요시)</li>
+                <li>신용카드 및 현지 화폐</li>
+                <li>상비약 및 개인 의약품</li>
+                <li>충전기 및 변환 플러그</li>
+                <li>여행용 배낭 및 보조 가방</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tip-item">
+            <div class="tip-header">
+              <div class="tip-icon">🌍</div>
+              <h3>비자 정보 및 입국 요건</h3>
+              <span class="tip-toggle">+</span>
+            </div>
+            <div class="tip-content">
+              <ul>
+                <li>
+                  무비자 입국 가능 국가: 미국(ESTA), 유럽(쉥겐), 일본, 싱가포르
+                  등
+                </li>
+                <li>전자비자(e-Visa): 인도, 호주, 터키, 캐나다 등</li>
+                <li>대사관 방문 필요: 중국, 러시아, 베트남 등</li>
+                <li>코로나19 관련: 각국 입국 요건 사전 확인 필수</li>
+                <li>여권 유효기간: 최소 6개월 이상 남아있어야 함</li>
+                <li>왕복 항공권 또는 출국 항공권 소지 필수</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tip-item">
+            <div class="tip-header">
+              <div class="tip-icon">📅</div>
+              <h3>여행 시기 추천</h3>
+              <span class="tip-toggle">+</span>
+            </div>
+            <div class="tip-content">
+              <ul>
+                <li>
+                  <strong>유럽:</strong> 4~6월, 9~10월 (봄/가을 성수기 회피)
+                </li>
+                <li><strong>동남아:</strong> 11~2월 (건기, 시원한 날씨)</li>
+                <li><strong>일본:</strong> 3~4월 (벚꽃), 10~11월 (단풍)</li>
+                <li><strong>미국 서부:</strong> 5~9월 (따뜻한 날씨)</li>
+                <li><strong>호주/뉴질랜드:</strong> 12~2월 (여름)</li>
+                <li><strong>중동:</strong> 11~3월 (선선한 날씨)</li>
+                <li><strong>남미:</strong> 12~3월 (여름, 건기)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tip-item">
+            <div class="tip-header">
+              <div class="tip-icon">💡</div>
+              <h3>여행 꿀팁</h3>
+              <span class="tip-toggle">+</span>
+            </div>
+            <div class="tip-content">
+              <ul>
+                <li>항공권은 출발 2~3개월 전 예약이 가장 저렴</li>
+                <li>화요일/수요일 출발이 주말보다 저렴한 경우가 많음</li>
+                <li>현지 심카드나 eSIM 미리 구매 추천</li>
+                <li>구글맵 오프라인 지도 다운로드</li>
+                <li>중요 서류는 클라우드에 스캔 보관</li>
+                <li>현지 대중교통 앱 미리 설치</li>
+                <li>호텔보다 에어비앤비가 저렴할 수 있음</li>
+                <li>박물관/명소는 온라인 사전 예약으로 줄서기 생략</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Exchange Rates Section -->
+    <section class="currency-exchange" id="exchange">
+      <div class="container">
+        <h2 class="section-title">실시간 환율 정보</h2>
+        <p class="section-subtitle">오늘의 주요 통화 환율을 확인하세요</p>
+        <div class="currency-grid">
+          <div class="currency-card">
+            <div class="currency-flag">🇺🇸</div>
+            <h3>미국 달러</h3>
+            <p class="currency-code">USD</p>
+            <p class="currency-rate" id="usd-rate">₩1,320.50</p>
+            <p class="currency-change positive" id="usd-change">
+              ▲ 5.30 (0.40%)
+            </p>
+          </div>
+          <div class="currency-card">
+            <div class="currency-flag">🇪🇺</div>
+            <h3>유로</h3>
+            <p class="currency-code">EUR</p>
+            <p class="currency-rate" id="eur-rate">₩1,450.80</p>
+            <p class="currency-change positive" id="eur-change">
+              ▲ 8.20 (0.57%)
+            </p>
+          </div>
+          <div class="currency-card">
+            <div class="currency-flag">🇯🇵</div>
+            <h3>일본 엔</h3>
+            <p class="currency-code">JPY (100)</p>
+            <p class="currency-rate" id="jpy-rate">₩900.25</p>
+            <p class="currency-change negative" id="jpy-change">
+              ▼ 2.10 (0.23%)
+            </p>
+          </div>
+          <div class="currency-card">
+            <div class="currency-flag">🇨🇳</div>
+            <h3>중국 위안</h3>
+            <p class="currency-code">CNY</p>
+            <p class="currency-rate" id="cny-rate">₩185.60</p>
+            <p class="currency-change positive" id="cny-change">
+              ▲ 1.50 (0.82%)
+            </p>
+          </div>
+        </div>
+        <p class="currency-update-time">
+          마지막 업데이트: <span id="update-time">2026-01-15 15:30:00</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+      <div class="container">
+        <h2 class="section-title">Our Partners</h2>
+        <p class="partners-subtitle">
+          전 세계 주요 항공사 및 파트너사와 함께합니다
+        </p>
+        <div class="partners-grid">
+          <div class="partner-logo">
+            <img src="../images/koreanAir.svg" alt="Korean Air" />
+          </div>
+          <div class="partner-logo">
+            <img src="../images/ASIANA.svg" alt="Asiana Airlines" />
+          </div>
+          <div class="partner-logo">
+            <img src="../images/american.svg" alt="American Airlines" />
+          </div>
+          <div class="partner-logo">
+            <img src="../images/delta.svg" alt="Delta Airlines" />
+          </div>
+          <div class="partner-logo">
+            <img src="../images/lufthansa.svg" alt="Lufthansa" />
+          </div>
+          <div class="partner-logo">
+            <img src="../images/ana.svg" alt="ANA" />
+          </div>
+          <div class="partner-logo">
+            <img src="../images/qatar.svg" alt="Qatar Airways" />
+          </div>
+          <div class="partner-logo">
+            <img src="../images/latam.svg" alt="LATAM" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-selectors">
+            <select class="currency-selector" id="currencySelector">
+              <option value="KRW">₩ KRW</option>
+              <option value="USD">$ USD</option>
+              <option value="EUR">€ EUR</option>
+              <option value="JPY">¥ JPY</option>
+              <option value="GBP">£ GBP</option>
+              <option value="CNY">¥ CNY</option>
+              <option value="AUD">$ AUD</option>
+              <option value="CAD">$ CAD</option>
+              <option value="CHF">Fr CHF</option>
+              <option value="HKD">$ HKD</option>
+              <option value="SGD">$ SGD</option>
+              <option value="THB">฿ THB</option>
+              <option value="NZD">$ NZD</option>
+              <option value="INR">₹ INR</option>
+              <option value="MXN">$ MXN</option>
+              <option value="BRL">R$ BRL</option>
+              <option value="ZAR">R ZAR</option>
+              <option value="RUB">₽ RUB</option>
+              <option value="AED">د.إ AED</option>
+              <option value="SAR">﷼ SAR</option>
+            </select>
+
+            <select class="language-selector" id="languageSelector">
+              <option value="ko">대한민국</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="zh">中文</option>
+              <option value="es">Español</option>
+              <option value="fr">Français</option>
+              <option value="de">Deutsch</option>
+              <option value="it">Italiano</option>
+              <option value="pt">Português</option>
+              <option value="ru">Русский</option>
+            </select>
+          </div>
+
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path
+                  fill="currentColor"
+                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path
+                  fill="currentColor"
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path
+                  fill="currentColor"
+                  d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <p class="footer-copyright">
+          &copy; 2026 WorldTripClub. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Sticky Search Bar (appears on scroll) -->
+    <div class="sticky-search" id="stickySearch">
+      <div class="container">
+        <div class="sticky-search-content">
+          <span class="search-icon">🔍</span>
+          <input
+            type="text"
+            class="sticky-search-input"
+            placeholder="여행지, 갤러리, 호텔 등"
+            id="stickySearchInput"
+          />
+          <button class="sticky-search-button">검색</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/Script.js"></script>
+  </body>
+</html>

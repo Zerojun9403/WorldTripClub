@@ -1,0 +1,993 @@
+/* Country Page Specific Styles */
+
+/* Page Header */
+.page-header {
+  background: linear-gradient(135deg, var(--bg-light), var(--cloud-white));
+  padding: 3rem 0;
+  text-align: center;
+  border-bottom: 2px solid var(--bg-light);
+}
+
+.page-title {
+  font-size: 2.5rem;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Country Content Layout */
+.country-content {
+  padding: 3rem 0;
+  min-height: calc(100vh - 400px);
+}
+
+.country-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 2rem;
+}
+
+/* Map Section */
+.map-section {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  background: var(--cloud-white);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px var(--shadow);
+  position: relative;
+}
+
+.section-heading {
+  font-size: 1.8rem;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.google-map {
+  width: 100%;
+  height: 500px;
+  background: var(--bg-light);
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Leaflet map full coverage */
+.google-map .leaflet-container {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+}
+
+.map-controls {
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.map-btn {
+  width: 40px;
+  height: 40px;
+  background-color: var(--cloud-white);
+  border: 2px solid var(--primary-blue);
+  border-radius: 8px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-blue);
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+.map-btn:hover {
+  background-color: var(--primary-blue);
+  color: var(--cloud-white);
+  transform: scale(1.1);
+}
+
+/* Selectors Section */
+.selectors-section {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.selector-card {
+  background: var(--cloud-white);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px var(--shadow);
+  transition: all 0.3s;
+}
+
+.selector-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(30, 136, 229, 0.2);
+}
+
+.selector-card h3 {
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.country-selector {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  border: 2px solid var(--primary-blue);
+  border-radius: 15px;
+  outline: none;
+  background-color: var(--cloud-white);
+  color: var(--text-dark);
+  cursor: pointer;
+  transition: all 0.3s;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Cpath fill='%231e88e5' d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  padding-right: 3rem;
+}
+
+.country-selector:hover {
+  border-color: var(--sunset-orange);
+  background-color: var(--bg-light);
+}
+
+.country-selector:focus {
+  border-color: var(--forest-green);
+  box-shadow: 0 0 0 3px rgba(67, 160, 71, 0.1);
+}
+
+/* Info Section */
+.info-section {
+  grid-column: 1 / 3;
+  grid-row: 3;
+  background: var(--cloud-white);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px var(--shadow);
+}
+
+.info-content {
+  margin-bottom: 2rem;
+  min-height: 150px;
+}
+
+.info-placeholder {
+  text-align: center;
+  padding: 3rem;
+  color: var(--text-light);
+  font-size: 1.1rem;
+}
+
+.info-placeholder p {
+  margin: 0;
+}
+
+.country-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-dark);
+  padding: 1.5rem;
+  background: var(--bg-light);
+  border-radius: 15px;
+  border-left: 4px solid var(--primary-blue);
+}
+
+.country-flag {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.country-flag img {
+  max-width: 200px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px var(--shadow);
+}
+
+/* Info Details Grid */
+.info-details {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--bg-light);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background: var(--bg-light);
+  border-radius: 15px;
+  transition: all 0.3s;
+}
+
+.detail-item:hover {
+  background: linear-gradient(135deg, var(--primary-blue), var(--ocean-blue));
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(30, 136, 229, 0.3);
+}
+
+.detail-item:hover .detail-label,
+.detail-item:hover .detail-value {
+  color: var(--cloud-white);
+}
+
+.detail-label {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.detail-value {
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+/* Active Nav Link */
+.nav-menu a.active {
+  color: var(--gold);
+  position: relative;
+}
+
+.nav-menu a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: var(--gold);
+  border-radius: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .country-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .map-section {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .selectors-section {
+    grid-column: 1;
+    grid-row: 1;
+    flex-direction: row;
+  }
+
+  .info-section {
+    grid-column: 1;
+    grid-row: 3;
+  }
+
+  .google-map {
+    height: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-title {
+    font-size: 2rem;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+  }
+
+  .selectors-section {
+    flex-direction: column;
+  }
+
+  .google-map {
+    height: 350px;
+  }
+
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .map-controls {
+    bottom: 2rem;
+    right: 2rem;
+  }
+
+  .map-btn {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header {
+    padding: 2rem 0;
+  }
+
+  .page-title {
+    font-size: 1.8rem;
+  }
+
+  .section-heading {
+    font-size: 1.3rem;
+  }
+
+  .map-section,
+  .selector-card,
+  .info-section {
+    padding: 1.5rem;
+  }
+
+  .google-map {
+    height: 300px;
+  }
+
+  .country-selector {
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+  }
+
+  .detail-item {
+    padding: 1rem;
+  }
+
+  .detail-value {
+    font-size: 1.1rem;
+  }
+}
+
+/* Travel Alert System Section */
+.travel-alert-system {
+  background: linear-gradient(135deg, var(--bg-light), var(--cloud-white));
+  padding: 5rem 0;
+}
+
+.travel-alert-system .section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+}
+
+.travel-alert-system .section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin-bottom: 3rem;
+}
+
+.alert-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.alert-card {
+  background: transparent;
+  border-radius: 20px;
+  padding: 0;
+  box-shadow: 0 4px 20px var(--shadow);
+  transition: transform 0.6s;
+  position: relative;
+  height: 320px;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.alert-card:hover {
+  transform: rotateY(180deg);
+}
+
+.alert-front,
+.alert-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px var(--shadow);
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.alert-front {
+  background: var(--cloud-white);
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.alert-front::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  border-radius: 20px 20px 0 0;
+}
+
+.alert-back {
+  background: var(--cloud-white);
+  transform: rotateY(180deg);
+  justify-content: center;
+  color: var(--cloud-white);
+}
+
+/* Level 1 - Blue */
+.alert-card.level-1 .alert-front::before {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+}
+
+.alert-card.level-1 .alert-back {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+}
+
+/* Level 2 - Yellow */
+.alert-card.level-2 .alert-front::before {
+  background: linear-gradient(135deg, #ca8a04, #fbbf24);
+}
+
+.alert-card.level-2 .alert-back {
+  background: linear-gradient(135deg, #ca8a04, #fbbf24);
+}
+
+/* Level 3 - Red */
+.alert-card.level-3 .alert-front::before {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+}
+
+.alert-card.level-3 .alert-back {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+}
+
+/* Level 4 - Black */
+.alert-card.level-4 .alert-front::before {
+  background: linear-gradient(135deg, #1f2937, #374151);
+}
+
+.alert-card.level-4 .alert-back {
+  background: linear-gradient(135deg, #1f2937, #374151);
+}
+
+/* Special - Red Stripes */
+.alert-card.level-special .alert-front::before {
+  background: repeating-linear-gradient(
+    45deg,
+    #dc2626,
+    #dc2626 10px,
+    #ffffff 10px,
+    #ffffff 20px
+  );
+}
+
+.alert-card.level-special .alert-back {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  position: relative;
+}
+
+.alert-card.level-special .alert-back::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.1) 10px,
+    transparent 10px,
+    transparent 20px
+  );
+  border-radius: 20px;
+  pointer-events: none;
+}
+
+.alert-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.alert-badge {
+  background: var(--bg-light);
+  color: var(--text-dark);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.alert-card.level-1 .alert-badge {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  color: var(--cloud-white);
+}
+
+.alert-card.level-2 .alert-badge {
+  background: linear-gradient(135deg, #ca8a04, #fbbf24);
+  color: var(--cloud-white);
+}
+
+.alert-card.level-3 .alert-badge {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: var(--cloud-white);
+}
+
+.alert-card.level-4 .alert-badge {
+  background: linear-gradient(135deg, #1f2937, #374151);
+  color: var(--cloud-white);
+}
+
+.alert-card.level-special .alert-badge {
+  background: repeating-linear-gradient(
+    45deg,
+    #dc2626,
+    #dc2626 5px,
+    #ffffff 5px,
+    #ffffff 10px
+  );
+  color: var(--text-dark);
+}
+
+.alert-title {
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.alert-content {
+  padding-left: 0.5rem;
+}
+
+.alert-description {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 0.8rem;
+}
+
+.alert-detail {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Alert Back Side Styles */
+.alert-back h4 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.alert-back p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.alert-back ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.alert-back ul li {
+  font-size: 0.95rem;
+  padding: 0.5rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.alert-back ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* Alert Info Box */
+.alert-info {
+  background: var(--cloud-white);
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 20px var(--shadow);
+  border-left: 6px solid var(--primary-blue);
+}
+
+.alert-info h4 {
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin-bottom: 1.5rem;
+}
+
+.alert-info ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.alert-info ul li {
+  font-size: 1rem;
+  color: var(--text-dark);
+  line-height: 2;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.alert-info ul li::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: var(--primary-blue);
+  font-weight: bold;
+}
+
+.alert-info ul li strong {
+  color: var(--primary-blue);
+  font-weight: 600;
+}
+
+.alert-notice {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--bg-light);
+}
+
+.alert-notice a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.alert-notice a:hover {
+  color: var(--sunset-orange);
+  text-decoration: underline;
+}
+/* ================================
+   Unified Apple-style Alert Cards
+   (All cards same vertical layout)
+   ================================ */
+
+/* 카드 기본 */
+.alert-front {
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.alert-card:hover .alert-front {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+  transform: translateY(-4px);
+}
+
+/* ================================
+   헤더를 전부 세로 정렬
+   ================================ */
+.alert-header {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+/* ================================
+   단계 카드 (1~4단계)
+   ================================ */
+.alert-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+/* 단계별 뱃지 색 */
+.level-1 .alert-badge {
+  background: #2563eb;
+}
+.level-2 .alert-badge {
+  background: #f59e0b;
+}
+.level-3 .alert-badge {
+  background: #ef4444;
+}
+.level-4 .alert-badge {
+  background: #111827;
+}
+
+/* ================================
+   특별여행주의보
+   ================================ */
+
+/* 기존 뱃지 제거 */
+.level-special .alert-badge {
+  display: none;
+}
+
+/* 특별 아이콘 생성 */
+.level-special .alert-header::before {
+  content: "특별";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #111;
+
+  background: repeating-linear-gradient(
+    45deg,
+    #ef4444,
+    #ef4444 6px,
+    #ffffff 6px,
+    #ffffff 12px
+  );
+}
+
+/* ================================
+   텍스트 스타일 (공통)
+   ================================ */
+.alert-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.alert-description {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #374151;
+  margin-top: 0.25rem;
+}
+
+.alert-detail {
+  color: #9ca3af;
+  line-height: 1.6;
+  margin-top: 0.25rem;
+}
+
+/* hover 시 텍스트 대비 미세 상승 */
+.alert-card:hover .alert-detail {
+  color: #6b7280;
+}
+
+/* ================================
+   카드 뒤집기 완전 비활성화
+   ================================ */
+.alert-back {
+  display: none;
+}
+
+.alert-card,
+.alert-card:hover {
+  transform: none;
+}
+
+/* ================================
+   Travel Alert Info - Service Style
+   ================================ */
+
+/* 전체 박스 톤 다운 */
+.alert-info {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2.25rem 2.5rem;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  border-left: none;
+}
+
+/* 상단 제목 */
+.alert-info h4 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.25rem;
+}
+
+/* 리스트 전체 */
+.alert-info ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* 항목 하나하나를 정책 문장처럼 */
+.alert-info ul li {
+  position: relative;
+  padding-left: 0;
+  margin-bottom: 0.75rem;
+
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #374151;
+}
+
+/* 기존 화살표 제거 */
+.alert-info ul li::before {
+  content: none;
+}
+
+/* 단계명만 은은하게 강조 */
+.alert-info ul li strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+/* 안내 문구 구분선 */
+.alert-notice {
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+
+  font-size: 0.95rem;
+  color: #6b7280;
+
+  border-top: 1px solid #e5e7eb;
+}
+
+/* 링크도 운영사이트 톤 */
+.alert-notice a {
+  color: #2563eb;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.alert-notice a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .travel-alert-system {
+    padding: 3rem 0;
+  }
+
+  .travel-alert-system .section-title {
+    font-size: 2rem;
+  }
+
+  .alert-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .alert-card {
+    height: 280px;
+  }
+
+  .alert-front,
+  .alert-back {
+    padding: 1.5rem;
+  }
+
+  .alert-title {
+    font-size: 1.3rem;
+  }
+
+  .alert-back h4 {
+    font-size: 1.2rem;
+  }
+
+  .alert-back p {
+    font-size: 0.95rem;
+  }
+
+  .alert-back ul li {
+    font-size: 0.9rem;
+  }
+
+  .alert-info {
+    padding: 2rem;
+  }
+
+  .alert-info h4 {
+    font-size: 1.3rem;
+  }
+
+  .alert-info ul li {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .alert-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .alert-card {
+    height: 260px;
+  }
+
+  .alert-front,
+  .alert-back {
+    padding: 1.5rem;
+  }
+
+  .alert-header {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+  }
+
+  .alert-badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.7rem;
+  }
+
+  .alert-title {
+    font-size: 1.1rem;
+  }
+
+  .alert-description {
+    font-size: 1rem;
+  }
+
+  .alert-detail {
+    font-size: 0.85rem;
+  }
+
+  .alert-back h4 {
+    font-size: 1.1rem;
+  }
+
+  .alert-back p {
+    font-size: 0.9rem;
+  }
+
+  .alert-back ul li {
+    font-size: 0.85rem;
+    padding: 0.3rem 0;
+    padding-left: 1.2rem;
+  }
+}

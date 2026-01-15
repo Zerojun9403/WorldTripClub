@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>WorldTripClub Favicon Generator</title>
+</head>
+<body>
+    <canvas id="canvas" width="512" height="512"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Background - Blue gradient
+        const gradient = ctx.createLinearGradient(0, 0, 512, 512);
+        gradient.addColorStop(0, '#4fc3f7');
+        gradient.addColorStop(1, '#0277bd');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 512, 512);
+        
+        // Draw globe circle
+        ctx.beginPath();
+        ctx.arc(256, 256, 180, 0, Math.PI * 2);
+        ctx.fillStyle = '#ffffff';
+        ctx.fill();
+        ctx.lineWidth = 8;
+        ctx.strokeStyle = '#1e88e5';
+        ctx.stroke();
+        
+        // Draw longitude lines
+        ctx.strokeStyle = '#4fc3f7';
+        ctx.lineWidth = 4;
+        
+        // Vertical lines
+        for (let i = 0; i < 5; i++) {
+            ctx.beginPath();
+            const x = 130 + (i * 62);
+            ctx.ellipse(x, 256, 25, 180, 0, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+        
+        // Horizontal lines (latitude)
+        for (let i = 1; i < 4; i++) {
+            ctx.beginPath();
+            const y = 120 + (i * 90);
+            const width = Math.abs(Math.cos((i - 2) * 0.5)) * 180;
+            ctx.ellipse(256, y, width, 20, 0, 0, Math.PI * 2);
+            ctx.stroke();
+        }
+        
+        // Draw airplane icon
+        ctx.save();
+        ctx.translate(256, 256);
+        ctx.rotate(-Math.PI / 4);
+        
+        // Airplane body
+        ctx.fillStyle = '#ff6f00';
+        ctx.beginPath();
+        ctx.moveTo(-40, 0);
+        ctx.lineTo(-30, -8);
+        ctx.lineTo(40, -8);
+        ctx.lineTo(50, 0);
+        ctx.lineTo(40, 8);
+        ctx.lineTo(-30, 8);
+        ctx.closePath();
+        ctx.fill();
+        
+        // Wings
+        ctx.beginPath();
+        ctx.moveTo(-10, -8);
+        ctx.lineTo(-10, -35);
+        ctx.lineTo(5, -25);
+        ctx.lineTo(5, -8);
+        ctx.closePath();
+        ctx.fill();
+        
+        ctx.beginPath();
+        ctx.moveTo(-10, 8);
+        ctx.lineTo(-10, 35);
+        ctx.lineTo(5, 25);
+        ctx.lineTo(5, 8);
+        ctx.closePath();
+        ctx.fill();
+        
+        // Tail
+        ctx.beginPath();
+        ctx.moveTo(-40, -8);
+        ctx.lineTo(-50, -15);
+        ctx.lineTo(-40, -8);
+        ctx.closePath();
+        ctx.fill();
+        
+        ctx.restore();
+        
+        // Convert to different sizes and download
+        function downloadFavicon(size, filename) {
+            const tempCanvas = document.createElement('canvas');
+            tempCanvas.width = size;
+            tempCanvas.height = size;
+            const tempCtx = tempCanvas.getContext('2d');
+            tempCtx.drawImage(canvas, 0, 0, size, size);
+            
+            tempCanvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = filename;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+        }
+        
+        // Generate favicons
+        setTimeout(() => {
+            downloadFavicon(16, 'favicon-16x16.png');
+            setTimeout(() => downloadFavicon(32, 'favicon-32x32.png'), 100);
+            setTimeout(() => downloadFavicon(192, 'android-chrome-192x192.png'), 200);
+            setTimeout(() => downloadFavicon(512, 'android-chrome-512x512.png'), 300);
+            setTimeout(() => {
+                canvas.toBlob(function(blob) {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'favicon.ico';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                });
+            }, 400);
+        }, 500);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1465 @@
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  /* World Travel Color Palette */
+  --primary-blue: #1e88e5;
+  --ocean-blue: #0277bd;
+  --sky-blue: #4fc3f7;
+  --sunset-orange: #ff6f00;
+  --gold: #ffa726;
+  --forest-green: #43a047;
+  --earth-brown: #6d4c41;
+  --cloud-white: #ffffff;
+  --text-dark: #212121;
+  --text-light: #757575;
+  --bg-light: #f5f5f5;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--cloud-white);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Navigation */
+.navbar {
+  background: linear-gradient(135deg, var(--primary-blue), var(--ocean-blue));
+  box-shadow: 0 2px 10px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 20px;
+}
+
+.nav-brand h1 {
+  color: var(--cloud-white);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.nav-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--cloud-white);
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.nav-menu a {
+  color: var(--cloud-white);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-menu a:hover {
+  color: var(--gold);
+}
+
+.btn-login {
+  background-color: var(--cloud-white);
+  color: var(--text-light) !important;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  font-weight: 600;
+}
+
+.btn-login:hover {
+  background-color: #ffce00;
+  color: var(--cloud-white) !important;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  color: var(--cloud-white);
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+  height: 100vh;
+  min-height: 600px;
+}
+
+.hero-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3));
+  z-index: 2;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  animation: fadeInUp 1s ease;
+  color: var(--cloud-white);
+}
+
+/* Hero Search Section */
+.hero-search {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.search-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.search-tab {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: var(--cloud-white);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 0.7rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  backdrop-filter: blur(10px);
+}
+
+.search-tab:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.search-tab.active {
+  background-color: var(--cloud-white);
+  color: var(--text-dark);
+  border-color: var(--cloud-white);
+}
+
+.tab-icon {
+  font-size: 1.2rem;
+}
+
+.search-box {
+  background-color: var(--cloud-white);
+  border-radius: 50px;
+  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+}
+
+.search-box:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+.search-icon {
+  font-size: 1.5rem;
+  color: var(--text-light);
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1.1rem;
+  padding: 0.8rem 0;
+  color: var(--text-dark);
+}
+
+.search-input::placeholder {
+  color: var(--text-light);
+}
+
+.search-button {
+  background: linear-gradient(135deg, var(--forest-green), var(--primary-blue));
+  color: var(--cloud-white);
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 40px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(67, 160, 71, 0.4);
+}
+
+.search-button:hover {
+  background: linear-gradient(135deg, var(--primary-blue), var(--ocean-blue));
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(30, 136, 229, 0.5);
+}
+
+/* Slider Navigation Buttons */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(255, 255, 255, 0.3);
+  color: var(--cloud-white);
+  border: 2px solid var(--cloud-white);
+  font-size: 2rem;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  z-index: 4;
+  transition: all 0.3s;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.slider-btn:hover {
+  background-color: var(--sunset-orange);
+  border-color: var(--sunset-orange);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.slider-btn.prev {
+  left: 2rem;
+}
+
+.slider-btn.next {
+  right: 2rem;
+}
+
+/* Slider Dots */
+.slider-dots {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+  z-index: 4;
+}
+
+.slider-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 2px solid var(--cloud-white);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.slider-dot:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+}
+
+.slider-dot.active {
+  background-color: var(--sunset-orange);
+  border-color: var(--sunset-orange);
+  transform: scale(1.3);
+}
+
+.btn-primary {
+  background-color: #ffce00;
+  color: var(--cloud-white);
+  border: none;
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(255, 111, 0, 0.4);
+}
+
+.btn-primary:hover {
+  background-color: #ffce00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px;
+}
+
+/* Section Styles */
+section {
+  padding: 4rem 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+/* Exchange Rates */
+.exchange-rates {
+  background-color: var(--bg-light);
+  padding: 5rem 0;
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin-top: -2rem;
+  margin-bottom: 3rem;
+}
+
+.rates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.rate-card {
+  background-size: cover;
+  background-position: center;
+  padding: 0;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px var(--shadow);
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: none;
+  overflow: hidden;
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+.rate-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.7)
+  );
+  transition: background 0.3s;
+}
+
+.rate-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+.rate-card:hover .rate-overlay {
+  background: linear-gradient(
+    to bottom,
+    rgba(30, 136, 229, 0.4),
+    rgba(30, 136, 229, 0.8)
+  );
+}
+
+.rate-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  width: 100%;
+}
+
+.rate-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.rate-card h3 {
+  color: var(--cloud-white);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+.rate-description {
+  color: var(--cloud-white);
+  font-size: 1rem;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+  opacity: 0.95;
+}
+
+/* World Cities */
+.cities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.city-card {
+  text-align: center;
+}
+
+.city-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 15px var(--shadow);
+  transition: all 0.3s;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.city-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.3));
+  border-radius: 50%;
+  transition: all 0.3s;
+}
+
+.city-circle:hover .city-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 111, 0, 0.8),
+    rgba(255, 167, 38, 0.7)
+  );
+}
+
+.city-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.city-circle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(30, 136, 229, 0.3);
+  border-color: var(--sunset-orange);
+}
+
+.city-circle h3 {
+  font-size: 1.8rem;
+  color: var(--cloud-white);
+  margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+}
+
+.city-info {
+  font-size: 0.9rem;
+  color: var(--cloud-white);
+}
+
+.city-info .time {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--cloud-white);
+  margin-bottom: 0.3rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.city-info .weather {
+  display: block;
+  color: var(--cloud-white);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Travel Planner */
+.travel-planner {
+  background: linear-gradient(135deg, var(--bg-light), var(--cloud-white));
+}
+
+.planner-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.planner-card {
+  background: var(--cloud-white);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px var(--shadow);
+}
+
+.planner-card label {
+  display: block;
+  font-size: 1.2rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.date-input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 2px solid var(--primary-blue);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.date-input:focus {
+  border-color: var(--sunset-orange);
+}
+
+.btn-secondary {
+  display: block;
+  margin: 2rem auto 0;
+  background-color: #ffce00;
+  color: var(--cloud-white);
+  border: none;
+  padding: 1rem 3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  background-color: var(--primary-blue);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(30, 136, 229, 0.5);
+}
+
+/* Travel Tips Section */
+.travel-tips {
+  background-color: var(--cloud-white);
+  padding: 5rem 0;
+}
+
+.tips-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tip-item {
+  background: var(--cloud-white);
+  border: 2px solid var(--bg-light);
+  border-radius: 15px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.tip-item:hover {
+  border-color: var(--primary-blue);
+  box-shadow: 0 4px 15px var(--shadow);
+}
+
+.tip-header {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--bg-light), var(--cloud-white));
+  transition: background 0.3s;
+}
+
+.tip-header:hover {
+  background: linear-gradient(135deg, var(--primary-blue), var(--ocean-blue));
+}
+
+.tip-header:hover h3,
+.tip-header:hover .tip-toggle {
+  color: var(--cloud-white);
+}
+
+.tip-icon {
+  font-size: 2.5rem;
+  margin-right: 1rem;
+  min-width: 60px;
+  text-align: center;
+}
+
+.tip-header h3 {
+  flex: 1;
+  font-size: 1.3rem;
+  color: var(--text-dark);
+  transition: color 0.3s;
+}
+
+.tip-toggle {
+  font-size: 2rem;
+  color: var(--text-dark);
+  font-weight: bold;
+  transition: all 0.3s;
+  min-width: 30px;
+  text-align: center;
+}
+
+.tip-item.active .tip-toggle {
+  transform: rotate(45deg);
+  color: var(--sunset-orange);
+}
+
+.tip-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 1.5rem;
+  background: var(--cloud-white);
+}
+
+.tip-item.active .tip-content {
+  max-height: 500px;
+  padding: 1.5rem;
+  border-top: 2px solid var(--bg-light);
+}
+
+.tip-content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tip-content li {
+  padding: 0.7rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+.tip-content li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--forest-green);
+  font-weight: bold;
+}
+
+.tip-content li strong {
+  color: var(--text-dark);
+  font-weight: 700;
+}
+
+/* Partners Section */
+.partners {
+  background: linear-gradient(135deg, var(--bg-light), var(--cloud-white));
+  padding: 5rem 0;
+}
+
+.partners-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: var(--text-light);
+  margin-bottom: 3rem;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 3rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.partner-logo {
+  background: var(--cloud-white);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px var(--shadow);
+  transition: all 0.3s;
+  width: 100%;
+  max-width: 200px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partner-logo:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 25px rgba(30, 136, 229, 0.3);
+}
+
+.partner-logo img {
+  max-width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+  filter: grayscale(100%);
+  opacity: 0.85;
+  transition: filter 0.25s ease, opacity 0.25s ease;
+}
+
+.partner-logo:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+/* Currency Exchange Section */
+.currency-exchange {
+  background-color: var(--cloud-white);
+  padding: 5rem 0;
+}
+
+.currency-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.currency-card {
+  background: linear-gradient(135deg, var(--bg-light), var(--cloud-white));
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 4px 20px var(--shadow);
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.currency-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(30, 136, 229, 0.2);
+  border-color: var(--primary-blue);
+}
+
+.currency-flag {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.currency-card h3 {
+  color: var(--text-dark);
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.currency-code {
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.currency-rate {
+  color: var(--text-dark);
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+}
+
+.currency-change {
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.currency-change.positive {
+  color: #d32f2f;
+  background-color: rgba(211, 47, 47, 0.1);
+}
+
+.currency-change.negative {
+  color: #1976d2;
+  background-color: rgba(25, 118, 210, 0.1);
+}
+
+.currency-update-time {
+  text-align: center;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  margin-top: 2rem;
+}
+
+.currency-update-time span {
+  font-weight: 600;
+  color: var(--text-dark);
+}
+
+/* Footer */
+.footer {
+  background: linear-gradient(135deg, var(--text-dark), var(--earth-brown));
+  color: var(--cloud-white);
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.footer p {
+  font-size: 1rem;
+}
+
+/* Footer Styles */
+.footer {
+  background: linear-gradient(135deg, var(--text-dark), var(--earth-brown));
+  color: var(--cloud-white);
+  padding: 3rem 0 2rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-selectors {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.currency-selector,
+.language-selector {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--cloud-white);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 0.7rem 1.2rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  outline: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='white' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.8rem center;
+  padding-right: 2.5rem;
+}
+
+.currency-selector:hover,
+.language-selector:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.currency-selector option,
+.language-selector option {
+  background-color: var(--text-dark);
+  color: var(--cloud-white);
+}
+
+.footer-social {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.social-icon {
+  color: var(--cloud-white);
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social-icon:hover {
+  color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.social-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.footer-copyright {
+  text-align: center;
+  font-size: 0.95rem;
+  opacity: 0.8;
+  margin-top: 0;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Sticky Search Bar */
+.sticky-search {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background-color: var(--cloud-white);
+  box-shadow: 0 2px 10px var(--shadow);
+  z-index: 999;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+.sticky-search.visible {
+  transform: translateY(0);
+}
+
+.sticky-search-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.sticky-search .search-icon {
+  font-size: 1.3rem;
+  color: var(--text-light);
+}
+
+.sticky-search-input {
+  flex: 1;
+  border: 2px solid var(--bg-light);
+  outline: none;
+  font-size: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 25px;
+  transition: border-color 0.3s;
+}
+
+.sticky-search-input:focus {
+  border-color: var(--primary-blue);
+}
+
+.sticky-search-button {
+  background: linear-gradient(135deg, var(--forest-green), var(--primary-blue));
+  color: var(--cloud-white);
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.sticky-search-button:hover {
+  background: linear-gradient(135deg, var(--primary-blue), var(--ocean-blue));
+  transform: scale(1.05);
+}
+/* ================================
+   Apple-style Travel Tips (Override)
+   ================================ */
+
+/* 섹션 배경은 그대로 두고 카드만 정리 */
+.travel-tips {
+  background-color: var(--cloud-white);
+}
+
+/* 카드 자체 */
+.tip-item {
+  border: none;
+  background: #ffffff;
+  border-radius: 18px;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+
+/* hover – 애플식 “살짝 뜸” */
+.tip-item:hover {
+  background: #f9fafb;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* 헤더 */
+.tip-header {
+  background: transparent;
+  padding: 1.4rem 1.6rem;
+}
+
+/* hover 시 배경색 변화 제거 */
+.tip-header:hover {
+  background: transparent;
+}
+
+/* 아이콘 – 작고 정제 */
+.tip-icon {
+  font-size: 1.8rem;
+  margin-right: 1rem;
+}
+
+/* 제목 */
+.tip-header h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* + 아이콘 → 상태용 chevron 느낌 */
+.tip-toggle {
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: #9ca3af;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+/* hover 시 + 강조 */
+.tip-item:hover .tip-toggle {
+  color: #111827;
+}
+
+/* 열렸을 때만 회전 */
+.tip-item.active .tip-toggle {
+  transform: rotate(45deg);
+  color: #111827;
+}
+
+/* 펼쳐지는 콘텐츠 */
+.tip-content {
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+}
+
+/* 리스트 */
+.tip-content li {
+  color: #374151;
+  line-height: 1.7;
+  font-size: 0.95rem;
+}
+
+/* 체크 아이콘도 톤 다운 */
+.tip-content li::before {
+  color: #9ca3af;
+}
+
+/* 강조 텍스트 */
+.tip-content li strong {
+  color: #111827;
+  font-weight: 600;
+}
+
+/* ================================
+   FIX: Travel Tips hover 시 글씨 안 보임
+   ================================ */
+
+/* hover 시에도 텍스트 색 고정 */
+.tip-item:hover .tip-header h3 {
+  color: #111827;
+}
+
+/* 아이콘도 같이 고정 */
+.tip-item:hover .tip-icon {
+  color: inherit;
+}
+
+/* + 아이콘만 색 변화 허용 */
+.tip-item:hover .tip-toggle {
+  color: #111827;
+}
+
+/* 혹시 남아있는 hover 색상 강제 무력화 */
+.tip-header:hover h3,
+.tip-header:hover .tip-toggle {
+  color: inherit;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+  .sticky-search-content {
+    padding-top: 20px; /* ✅ 시각적 기준선 */
+  }
+
+  .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    padding: 0;
+    background: var(--ocean-blue);
+    flex-direction: column;
+    border-radius: 0 0 16px 16px;
+    max-height: 0; /* 기본 숨김 */
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    z-index: 999;
+  }
+
+  .nav-menu.active {
+    max-height: 600px; /* 열렸을 때 */
+  }
+
+  .nav-menu li {
+    padding: 0.6rem 0;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero {
+    padding: 0;
+    min-height: 500px;
+    height: 70vh;
+  }
+
+  .search-tabs {
+    gap: 0.3rem;
+  }
+  .hero-search {
+    display: none;
+  }
+  .search-tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .tab-icon {
+    font-size: 1rem;
+  }
+
+  .search-box {
+    padding: 0.4rem 0.4rem 0.4rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .search-input {
+    font-size: 1rem;
+    padding: 0.6rem 0;
+  }
+
+  .search-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .slider-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+  }
+
+  .slider-btn.prev {
+    left: 1rem;
+  }
+
+  .slider-btn.next {
+    right: 1rem;
+  }
+
+  .slider-dots {
+    bottom: 1rem;
+    gap: 0.7rem;
+  }
+
+  .slider-dot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .rates-grid,
+  .cities-grid,
+  .planner-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .rate-card {
+    min-height: 250px;
+  }
+
+  .rate-card h3 {
+    font-size: 1.7rem;
+  }
+
+  .rate-description {
+    font-size: 0.95rem;
+  }
+
+  .city-circle {
+    width: 180px;
+    height: 180px;
+  }
+
+  .tip-header {
+    padding: 1rem;
+  }
+
+  .tip-icon {
+    font-size: 2rem;
+    min-width: 50px;
+  }
+
+  .tip-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .partner-logo {
+    max-width: 150px;
+    height: 100px;
+    padding: 1.5rem;
+  }
+
+  .partner-logo img {
+    max-height: 60px;
+  }
+
+  .currency-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .currency-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .currency-flag {
+    font-size: 3rem;
+  }
+
+  .currency-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .currency-rate {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero {
+    min-height: 400px;
+    height: 60vh;
+  }
+
+  .search-tabs {
+    gap: 0.3rem;
+  }
+
+  .search-tab {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .tab-icon {
+    font-size: 0.9rem;
+  }
+
+  .search-box {
+    flex-direction: column;
+    padding: 1rem;
+    border-radius: 20px;
+    gap: 0.8rem;
+  }
+
+  .search-icon {
+    display: none;
+  }
+
+  .search-input {
+    width: 100%;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+
+  .search-button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+  }
+
+  .slider-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    padding: 0.3rem;
+  }
+
+  .slider-btn.prev {
+    left: 0.5rem;
+  }
+
+  .slider-btn.next {
+    right: 0.5rem;
+  }
+
+  .slider-dots {
+    bottom: 0.8rem;
+    gap: 0.5rem;
+  }
+
+  .slider-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+  }
+
+  .rate-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .rate-value {
+    font-size: 1.5rem;
+  }
+
+  .city-circle {
+    width: 150px;
+    height: 150px;
+  }
+
+  .city-circle h3 {
+    font-size: 1.5rem;
+  }
+
+  .tip-icon {
+    font-size: 1.8rem;
+    min-width: 40px;
+    margin-right: 0.5rem;
+  }
+
+  .tip-header h3 {
+    font-size: 1rem;
+  }
+
+  .tip-toggle {
+    font-size: 1.5rem;
+  }
+
+  .partners-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .partner-logo {
+    max-width: 180px;
+  }
+
+  .currency-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .currency-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .currency-flag {
+    font-size: 3.5rem;
+  }
+
+  .currency-rate {
+    font-size: 1.8rem;
+  }
+
+  .currency-change {
+    font-size: 0.9rem;
+  }
+}

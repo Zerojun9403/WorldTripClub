@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>국가정보 - WorldTripClub</title>
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="../images/favicon.svg" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../images/favicon-16x16.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../images/apple-touch-icon.png"
+    />
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico" />
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/country.css" />
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar">
+      <div class="container">
+        <div class="nav-brand">
+          <h1>
+            <a href="main.html" style="color: inherit; text-decoration: none"
+              >WorldTripClub</a
+            >
+          </h1>
+        </div>
+        <button class="nav-toggle" id="navToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="main.html#home">Home</a></li>
+          <li><a href="country.html" class="active">국가정보</a></li>
+          <li><a href="main.html#exchange">환율정보</a></li>
+          <li><a href="main.html#board">게시판</a></li>
+          <li><a href="#" class="btn-login">로그인</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Page Title -->
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">여행정보</h1>
+      </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="country-content">
+      <div class="container">
+        <div class="country-layout">
+          <!-- Left: Google Map -->
+          <div class="map-section">
+            <h2 class="section-heading">MAP</h2>
+            <div id="map" class="google-map"></div>
+            <div class="map-controls">
+              <button class="map-btn" id="zoomIn">+</button>
+              <button class="map-btn" id="zoomOut">-</button>
+            </div>
+          </div>
+
+          <!-- Right Top: Continent & Country -->
+          <div class="selectors-section">
+            <div class="selector-card">
+              <h3>대륙</h3>
+              <select id="continentSelect" class="country-selector">
+                <option value="">대륙 선택</option>
+                <option value="asia">아시아</option>
+                <option value="europe">유럽</option>
+                <option value="africa">아프리카</option>
+                <option value="north-america">북아메리카</option>
+                <option value="south-america">남아메리카</option>
+                <option value="oceania">오세아니아</option>
+              </select>
+            </div>
+
+            <div class="selector-card">
+              <h3>국가</h3>
+              <select id="countrySelect" class="country-selector">
+                <option value="">국가 선택</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Bottom: Country Information -->
+          <div class="info-section">
+            <h2 class="section-heading">국가소개</h2>
+            <div class="info-content" id="countryInfo">
+              <div class="info-placeholder">
+                <p>
+                  좌측 지도에서 국가를 클릭하거나 우측 선택기에서 대륙과 국가를
+                  선택하세요.
+                </p>
+              </div>
+            </div>
+
+            <div class="info-details" id="countryDetails">
+              <div class="detail-grid">
+                <div class="detail-item">
+                  <span class="detail-label">나라명</span>
+                  <span class="detail-value" id="countryName">-</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">수도</span>
+                  <span class="detail-value" id="capital">-</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">언어</span>
+                  <span class="detail-value" id="language">-</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">화폐단위</span>
+                  <span class="detail-value" id="currency">-</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">현지시간</span>
+                  <span class="detail-value" id="localTime">-</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">현지날씨</span>
+                  <span class="detail-value" id="weather">-</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">대사관여부</span>
+                  <span class="detail-value" id="embassy">-</span>
+                </div>
+                <div class="detail-item">
+                  <span class="detail-label">여행경보단계</span>
+                  <span class="detail-value" id="travelAlert">-</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Travel Alert System Section -->
+    <section class="travel-alert-system">
+      <div class="container">
+        <h2 class="section-title">여행경보제도</h2>
+        <p class="section-subtitle">외교부에서 운영하는 여행경보 단계별 안내</p>
+
+        <div class="alert-grid">
+          <!-- Level 1: Blue -->
+          <div class="alert-card level-1">
+            <div class="alert-front">
+              <div class="alert-header">
+                <div class="alert-badge">1단계</div>
+                <h3 class="alert-title">남색경보</h3>
+              </div>
+              <div class="alert-content">
+                <p class="alert-description">여행유의</p>
+                <p class="alert-detail">
+                  국내 대도시 보다 상당히 높은 수준의 위험
+                </p>
+              </div>
+            </div>
+            <div class="alert-back">
+              <h4>📌 제도 안내</h4>
+              <p><strong>신변안전에 유의</strong>하며 여행 가능</p>
+              <ul>
+                <li>특별한 주의가 필요</li>
+                <li>현지 상황 수시 확인</li>
+                <li>여행자 보험 가입 권장</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Level 2: Yellow -->
+          <div class="alert-card level-2">
+            <div class="alert-front">
+              <div class="alert-header">
+                <div class="alert-badge">2단계</div>
+                <h3 class="alert-title">황색경보</h3>
+              </div>
+              <div class="alert-content">
+                <p class="alert-description">여행자제</p>
+                <p class="alert-detail">
+                  국내 대도시 보다 매우 높은 수준의 위험
+                </p>
+              </div>
+            </div>
+            <div class="alert-back">
+              <h4>📌 제도 안내</h4>
+              <p><strong>불필요한 여행은 자제</strong></p>
+              <ul>
+                <li>신변안전 위협 가능</li>
+                <li>긴급 연락처 숙지 필수</li>
+                <li>최소 체류 권장</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Level 3: Red -->
+          <div class="alert-card level-3">
+            <div class="alert-front">
+              <div class="alert-header">
+                <div class="alert-badge">3단계</div>
+                <h3 class="alert-title">적색경보</h3>
+              </div>
+              <div class="alert-content">
+                <p class="alert-description">출국권고</p>
+                <p class="alert-detail">
+                  국민의 생명과 안전을 위협하는 심각한 수준의 위험
+                </p>
+              </div>
+            </div>
+            <div class="alert-back">
+              <h4>📌 제도 안내</h4>
+              <p><strong>즉시 출국 권고</strong>, 신규 여행 금지</p>
+              <ul>
+                <li>생명 위협 수준</li>
+                <li>즉시 대피 준비</li>
+                <li>대사관 연락 필수</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Level 4: Black -->
+          <div class="alert-card level-4">
+            <div class="alert-front">
+              <div class="alert-header">
+                <div class="alert-badge">4단계</div>
+                <h3 class="alert-title">흑색경보</h3>
+              </div>
+              <div class="alert-content">
+                <p class="alert-description">여행금지</p>
+                <p class="alert-detail">
+                  국민의 생명과 안전을 위협하는 매우 심각한 수준의 위험
+                </p>
+              </div>
+            </div>
+            <div class="alert-back">
+              <h4>📌 제도 안내</h4>
+              <p><strong>즉시 대피 및 출국</strong>, 여행 금지</p>
+              <ul>
+                <li>전쟁, 내란 등 최악 상황</li>
+                <li>즉각 대피 필수</li>
+                <li>여권법 위반 시 처벌</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Special: Red Stripes -->
+          <div class="alert-card level-special">
+            <div class="alert-front">
+              <div class="alert-header">
+                <div class="alert-badge">특별</div>
+                <h3 class="alert-title">특별여행주의보</h3>
+              </div>
+              <div class="alert-content">
+                <p class="alert-description">특별여행주의보</p>
+                <p class="alert-detail">단기적으로 긴급한 위험</p>
+              </div>
+            </div>
+            <div class="alert-back">
+              <h4>📌 제도 안내</h4>
+              <p><strong>테러, 전염병 등 긴급 상황</strong></p>
+              <ul>
+                <li>일시적 위험 상황</li>
+                <li>즉시 상황 확인</li>
+                <li>외교부 공지 숙지</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="alert-info">
+          <h4>📌 여행경보제도 안내</h4>
+          <ul>
+            <li>
+              <strong>1단계 (남색경보):</strong> 신변안전에 유의하며 여행 가능
+            </li>
+            <li><strong>2단계 (황색경보):</strong> 불필요한 여행은 자제</li>
+            <li>
+              <strong>3단계 (적색경보):</strong> 즉시 출국 권고, 신규 여행 금지
+            </li>
+            <li>
+              <strong>4단계 (흑색경보):</strong> 즉시 대피 및 출국, 여행 금지
+            </li>
+            <li>
+              <strong>특별여행주의보:</strong> 테러, 전염병 등 긴급 상황 시 발령
+            </li>
+          </ul>
+          <p class="alert-notice">
+            ※ 최신 여행경보는
+            <a href="https://www.0404.go.kr" target="_blank" rel="noopener"
+              >외교부 해외안전여행 사이트</a
+            >에서 확인하세요.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-selectors">
+            <select class="currency-selector" id="currencySelector">
+              <option value="KRW">₩ KRW</option>
+              <option value="USD">$ USD</option>
+              <option value="EUR">€ EUR</option>
+              <option value="JPY">¥ JPY</option>
+            </select>
+
+            <select class="language-selector" id="languageSelector">
+              <option value="ko">대한민국</option>
+              <option value="en">English</option>
+              <option value="ja">日本語</option>
+              <option value="zh">中文</option>
+            </select>
+          </div>
+
+          <div class="footer-social">
+            <a href="#" class="social-icon" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path
+                  fill="currentColor"
+                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Twitter">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path
+                  fill="currentColor"
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path
+                  fill="currentColor"
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path
+                  fill="currentColor"
+                  d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
+                />
+              </svg>
+            </a>
+            <a href="#" class="social-icon" aria-label="TikTok">
+              <svg viewBox="0 0 24 24" width="24" height="24">
+                <path
+                  fill="currentColor"
+                  d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+        <p class="footer-copyright">
+          &copy; 2026 WorldTripClub. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="../js/Script.js"></script>
+
+    <!-- Leaflet JavaScript -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+
+    <script src="../js/country.js"></script>
+  </body>
+</html>
